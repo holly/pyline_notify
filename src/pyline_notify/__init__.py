@@ -42,7 +42,7 @@ class Response():
         self.rate_limit_headers = rate_limit_headers
 
     def is_success(self):
-        return True if self.status() == 200 else False
+        return True if self.status == 200 else False
 
     def status_line(self):
         return "{0} {1}".format(self.status, self.message)
