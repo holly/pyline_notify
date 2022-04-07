@@ -37,14 +37,12 @@ class PyLINENotify():
 class Response():
 
     def __init__(self, json={}, rate_limit_headers={}):
-        self.json = json
+        self.status = json["status"]
+        self.message = json["message"]
         self.rate_limit_headers = rate_limit_headers
 
     def is_success(self):
         return True if self.status() == 200 else False
 
-    def status(self):
-        return self.json["status"]
-
-    def message(self):
-        return self.json["message"]
+    def status_line(self):
+        return "{0} {1}".format(self.status, self.message)
